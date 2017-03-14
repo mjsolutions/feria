@@ -96,6 +96,10 @@ function onListening() {
 
  io.on('connection', function(socket) {
 
-  console.log('Cliente conectado')
+  console.log('Cliente conectado');
+
+  socket.on('bloqueado', function(data) {
+    socket.broadcast.emit('bloquear', data);
+  });
 
  });

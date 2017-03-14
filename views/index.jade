@@ -15,6 +15,11 @@ block content
   script(src="/socket.io/socket.io.js")
   script.
     var socket = io.connect('http://localhost:3000', {forceNew: true});
+    var pendientes = false;
+    var socketId;
+    socket.on('connect', function(){
+      socketId = socket.id;
+    });
 
     $(".button-collapse").sideNav({  
       menuWidth: '100%',  
@@ -23,8 +28,63 @@ block content
 
     $("#close-1").click(function() {
       $("#seccion-1").sideNav('hide');
+      //- alert(pendientes);
     });
 
     $("#close-2").click(function() {
       $("#seccion-2").sideNav('hide');
+    });
+
+    $(".asiento").click(function() {
+
+      var id = '#' + $(this).attr('id');
+      var emit = false;
+      var taquilla = "";
+      var bloqueado = "false";
+      
+
+      if($(id).attr('data-blocked') == 'false'){
+
+        bloqueado = "true";
+        taquilla = socketId;
+        emit = true;       
+
+      }else{
+        
+        if($(id).attr('data-taquilla') == socketId){
+          
+          bloqueado = "false";
+          taquilla = "";
+          emit = true;
+
+        }else{
+          
+          alert('no puedes desbloquear este lugar');
+          emit = false;
+
+        }
+
+      }
+
+      if(emit){
+        $(id).attr('data-taquilla',  taquilla);
+        $(id).attr('data-blocked', bloqueado);
+        $(id).toggleClass('bloqueado');
+
+        socket.emit('bloqueado', {
+          id: id,
+          taquilla: taquilla,
+          blocked: bloqueado
+        });
+      }
+
+
+    });
+
+    socket.on('bloquear', function(data) {
+      
+      $(data.id).toggleClass('bloqueado');
+      $(data.id).attr('data-taquilla',  data.taquilla);
+      $(data.id).attr('data-blocked',  data.blocked);
+
     });

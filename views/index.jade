@@ -2,12 +2,15 @@ extends layout
 
 block content
   main
-    //- h1= title
-    //- p Selecione la zona:
+    h2.mb-0= title
+    p.mtb-8 Selecione la zona:
+    br
+    br
     //- button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-1") Seccion 1
     //- button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-2") Seccion 2
-    section(style="min-height: 76.5vh;")
+    section(style="min-height: 50.5vh;")
       div.row
+        .col.s1
         img#teatro(src="/images/teatro.png" usemap="#teatro-pueblo" onclick="coordinadas(event)")
         map(name="teatro-pueblo")
           area(shape="poly" data-activates="seccion-1" coords="2, 138, 49, 103, 119, 66, 202, 33, 267, 18, 274, 52, 216, 66, 141, 94, 84, 125, 24, 166" alt="Sección 25" )
@@ -25,7 +28,7 @@ block content
   script(src="/js/materialize.min.js")
   script(src="/socket.io/socket.io.js")
   script.
-    var socket = io.connect('192.168.1.69:3000', {forceNew: true});
+    var socket = io.connect('localhost:3000', {forceNew: true});
     var pendientes = false;
     var socketId;
     socket.on('connect', function(){

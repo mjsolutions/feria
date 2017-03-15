@@ -1,15 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Selecione la zona:
-  button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-1") Seccion 1
-  button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-2") Seccion 2
+  main
+    h1= title
+    p Selecione la zona:
+    button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-1") Seccion 1
+    button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-2") Seccion 2
 
-  include sections/section-1
+    include sections/section-1
+    include sections/section-2
 
-  include sections/section-2
-
+  include sidenav
   script(src="/js/jquery-3.1.1.min.js")
   script(src="/js/materialize.min.js")
   script(src="/socket.io/socket.io.js")
@@ -22,9 +23,12 @@ block content
     });
 
     $(".button-collapse").sideNav({  
-      menuWidth: '100%',  
-      edge: 'left', // Choose the horizontal origin      
+      menuWidth: '80%',  
+      edge: 'right', // Choose the horizontal origin      
     });
+    //- $("#sidenav").sideNav({
+    //-   menuWidth: 200,
+    //- });
 
     $("#close-1").click(function() {
       $("#seccion-1").sideNav('hide');

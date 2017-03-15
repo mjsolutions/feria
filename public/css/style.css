@@ -1,10 +1,29 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	/*padding: 50px;*/
+	background: #efebe9 ;
+	/*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
+}
+
+header, main, footer {
+	padding-left: 22%;
+}
+
+.subtitle {
+	letter-spacing: 5px;
+	font-size: 1.3rem;
+}
+
+.col-center{
+	float: none!important;
+	margin: 0 auto!important;
+}
+
+[id^='seccion-']{
+	/*background: #f9fbe7 ;*/
 }
 
 .asiento {
@@ -23,4 +42,81 @@ a {
 	background: #e53935;
 	color: #FFF;
 	transition: all 0.3 linear;
+}
+
+#sidenav {
+	width: 20%;
+	/*background-color: #f9fbe7 ;*/
+}
+
+.side-nav .userView {
+	overflow: visible;
+	padding: 32px;
+	background: #e96443; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #e96443 , #904e95); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #e96443 , #904e95); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.userView > div {
+	position: absolute;
+	right: 40%!important;
+	top: 100px;
+}
+
+.userView > div > h4 {
+	margin: 0.8rem 0;
+	color: #26a69a;
+}
+.sidenav-content {
+	padding: 50px 10px 0;
+}
+.btn-floating.btn-large-2 {
+	width: 85px;
+	height: 85px;
+}
+.btn-floating i.big{
+	font-size: 2.6rem;
+	line-height: 67px;
+}
+#total > span {
+	font-size: 1.3rem;
+	font-weight: bold;
+	color: #111;
+}
+/***************
+*BORDERS
+***************/
+.border {
+	border: 1px solid #bbb;
+}
+
+.border-left {
+	border-left: 1px solid #bbb;
+}
+
+.border-right {
+	border-right: 1px solid #bbb;
+}
+
+.border-bottom {
+	border-bottom: 1px solid #bbb;
+}
+
+.border-top {
+	border-top: 1px solid #bbb;
+}
+
+/***************
+*MARGINS
+***************/
+.mt-15 {
+	margin-top: 15px;
+}
+
+.mt-30 {
+	margin-top: 30px;
+}
+
+.mtb-8 {
+	margin: 8px 0;
 }

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Expo Feria Michoacán</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link href="https://file.myfontastic.com/p33ryNdn2ug99gf3MgkiUK/icons.css" rel="stylesheet">
+</head>
+<body>
+<!--  <header>
+
+  <nav>
+    <div class="nav-wrapper grey darken-3">
+      <div class="container">
+        <a href="" class="brand-logo mt-5"><img class="responsive-img" width="60px" src="images/logotipo-nuevo-blanco.svg"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="">Corte de caja</a></li>
+          <li><a href="">Salir</a></li>
+        </ul>
+      </div>
+      <ul class="center-align side-nav" id="mobile-demo">
+        <div class="row mb-0">
+          <div class="col s10 col-center mt-30">
+            <a href="">
+              <img class="responsive-img" src="images/logotipo-nuevo-negro.svg" style="height: 50px;">
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s8 col-center divider"></div>
+        </div>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="">Corte de caja</a></li>
+        <li><a href="">Salir</a></li>
+      </ul>
+    </div>
+  </nav>
+</header> -->
+
+<main>
+  <section style="min-height: 76.5vh;">
+   <div class="row" >
+     <!-- <div class="center-align"> -->
+         <img id="teatro" src="images/teatro/Teatro del Pueblo.png" usemap="#teatro-pueblo" onclick="coordinadas(event)">
+         <map name="teatro-pueblo">
+           <area shape="poly" coords="2, 138, 49, 103, 119, 66, 202, 33, 267, 18, 274, 52, 216, 66, 141, 94, 84, 125, 24, 166" alt="Sección 25" onclick="alert('S25')">
+           <area shape="poly" coords="278, 16, 356, 6, 429, 2, 511, 6, 582, 17, 575, 51, 503, 39, 436, 36, 358, 40, 286, 50" alt="Sección 26" onclick="alert('S26')">
+           <area shape="poly" coords="594, 18, 678, 41, 732, 62, 807, 101, 857, 138, 836, 165, 781, 126, 720, 95, 650, 68, 586, 52" alt="Sección 27" onclick="alert('S27')">
+           <area shape="poly" coords="26, 169, 81, 129, 144, 96, 194, 76, 275, 55, 283, 89, 220, 104, 164, 125, 102, 157, 48, 196" alt="Sección 22" onclick="alert('S22')">
+           <area shape="poly" coords="286, 54, 364, 43, 430, 39, 497, 43, 574, 54, 567, 86, 504, 78, 442, 73, 363, 77, 294, 85" alt="Sección 23" onclick="alert('S23')">
+           <area shape="poly" coords="585, 56, 645, 70, 714, 95, 771, 124, 834, 168, 812, 198, 0, 0, 0, 0, 0, 0, 0, 0" alt="Sección 24" onclick="alert('S24')">
+           <!-- <area shape="poly" coords="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0" alt="Sección " onclick="alert('S')"> -->
+         </map>
+     <!-- </div> -->
+   </div>
+ </section>
+ <main>
+
+<!--   <footer class="page-footer grey darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Expo Feria Michoacán</h5>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright" style="background-color: rgba(0,0,0,0.4);">
+      <div class="container">
+        <div class="row">
+          <div class="col l6">
+            Todos los derechos reservados.            
+          </div>
+          <div class="col l6 right-align">
+            © 2017
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.js"></script>
+  <script>
+   $(document).ready(function(){
+    $(".button-collapse").sideNav({
+			 edge: 'right', // Choose the horizontal origin
+			 closeOnClick: true
+			});
+
+    $('.modal-trigger').leanModal();
+    $('select').material_select();
+			$(".dropdown-button").dropdown(); //puede funcionar sin esta declaracion
+		});
+
+   function coordinadas(event){
+    alert("Posición del ratón\nx: " + event.x + "\ny: " + event.y);
+  }
+</script>
+</body>
+</html>

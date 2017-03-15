@@ -13,8 +13,8 @@ block content
         .col.s1
         img#teatro(src="/images/teatro.png" usemap="#teatro-pueblo")
         map(name="teatro-pueblo")
-          area(shape="poly" data-activates="seccion-25" coords="2, 138, 49, 103, 119, 66, 202, 33, 267, 18, 274, 52, 216, 66, 141, 94, 84, 125, 24, 166" alt="Sección 25" )
-          area(shape="poly" data-activates="seccion-26" coords="278, 16, 356, 6, 429, 2, 511, 6, 582, 17, 575, 51, 503, 39, 436, 36, 358, 40, 286, 50" alt="Sección 26" )
+          area(shape="poly" data-id="25" data-activates="seccion-25" coords="2, 138, 49, 103, 119, 66, 202, 33, 267, 18, 274, 52, 216, 66, 141, 94, 84, 125, 24, 166" alt="Sección 25" )
+          area(shape="poly" data-activates="seccion-26" coords="278, 16, 356, 6, 429, 2, 511, 6, 582, 17, 575, 51, 503, 39, 436, 36, 358, 40, 286, 50" data-id="26" alt="Sección 26" )
           area(shape="poly" coords="594, 18, 678, 41, 732, 62, 807, 101, 857, 138, 836, 165, 781, 126, 720, 95, 650, 68, 586, 52" alt="Sección 27")
           area(shape="poly" coords="26, 169, 81, 129, 144, 96, 194, 76, 275, 55, 283, 89, 220, 104, 164, 125, 102, 157, 48, 196" alt="Sección 22")
           area(shape="poly" coords="286, 54, 364, 43, 430, 39, 497, 43, 574, 54, 567, 86, 504, 78, 442, 73, 363, 77, 294, 85" alt="Sección 23")
@@ -52,8 +52,11 @@ block content
     var socket = io.connect('localhost:3000', {forceNew: true});
     var pendientes = false;
     var socketId;
+    var fila = [];
+
     socket.on('connect', function(){
       socketId = socket.id;
+      socket.emit("request-id", {});
     });
 
     $("area").sideNav({  
@@ -63,10 +66,15 @@ block content
     //- $("#sidenav").sideNav({
     //-   menuWidth: 200,
     //- });
+    $("area").click(function(){
+      var seccion = $(this).attr("data-id");
+      $("#seccion").html(seccion);
+    });
 
     $(".close-btn").click(function() {
       var id = "#seccion-" + $(this).attr('data-close');
       $(id).sideNav('hide');
+      $("#seccion").html("");
       //- alert(pendientes);
     });
 
@@ -76,11 +84,13 @@ block content
       var emit = false;
       var taquilla = "";
       var bloqueado = "false";
+      var f = $(this).attr('data-fila');
       
 
       if($(id).attr('data-blocked') == 'false'){
 
         bloqueado = "true";
+        //- updateFila(f, "block");
         taquilla = socketId;
         emit = true;       
 
@@ -89,6 +99,7 @@ block content
         if($(id).attr('data-taquilla') == socketId){
           
           bloqueado = "false";
+          //- updateFila(f, "release");
           taquilla = "";
           emit = true;
 
@@ -124,6 +135,26 @@ block content
 
     });
 
+    socket.on("taquilla", function(data){
+      $("#taquilla-id").html(data);
+    });
+
     function coordinadas(event){
-    alert("Posición del ratón\nx: " + event.x + "\ny: " + event.y);
+      alert("Posición del ratón\nx: " + event.x + "\ny: " + event.y);
+    };
+
+    function updateFila(id, action) {
+
+      if(action == "block"){
+        if(jQuery.inArray(id,fila) == -1){
+          fila.push(id);
+          fila.sort();
+          $("#fila").html(fila.join(" "));
+        }
+      }else{
+
+      }
+
+      
+
     }

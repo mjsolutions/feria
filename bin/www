@@ -93,6 +93,7 @@ function onListening() {
 /**
  * Initializing sockets
  */
+var taquilla = 1;
 
  io.on('connection', function(socket) {
 
@@ -100,6 +101,11 @@ function onListening() {
 
   socket.on('bloqueado', function(data) {
     socket.broadcast.emit('bloquear', data);
+  });
+
+  socket.on("request-id", function(){
+    io.to(socket.id).emit("taquilla", taquilla);
+    taquilla++;
   });
 
  });

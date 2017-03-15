@@ -136,7 +136,7 @@ header, main, footer {
 }
 
 /***************
-*MARGINS
+*MARGINS & PADDINGS
 ***************/
 .mt-15 {
 	margin-top: 15px;
@@ -157,6 +157,13 @@ header, main, footer {
 	margin-bottom: 0!important;
 }
 
+.pr-30 {
+	padding-right: 30px;
+}
+
+.min-h68 {
+	min-height: 68px!important;
+}
 /*.side-nav {
 	box-shadow: none;
 }*/

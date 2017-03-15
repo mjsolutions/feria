@@ -2,10 +2,20 @@ extends layout
 
 block content
   main
-    h1= title
-    p Selecione la zona:
-    button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-1") Seccion 1
-    button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-2") Seccion 2
+    //- h1= title
+    //- p Selecione la zona:
+    //- button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-1") Seccion 1
+    //- button.button-collapse.waves-effect.waves-light.btn(data-activates="seccion-2") Seccion 2
+    section(style="min-height: 76.5vh;")
+      div.row
+        img#teatro(src="/images/teatro.png" usemap="#teatro-pueblo" onclick="coordinadas(event)")
+        map(name="teatro-pueblo")
+          area(shape="poly" data-activates="seccion-1" coords="2, 138, 49, 103, 119, 66, 202, 33, 267, 18, 274, 52, 216, 66, 141, 94, 84, 125, 24, 166" alt="Sección 25" )
+          area(shape="poly" data-activates="seccion-2" coords="278, 16, 356, 6, 429, 2, 511, 6, 582, 17, 575, 51, 503, 39, 436, 36, 358, 40, 286, 50" alt="Sección 26" )
+          area(shape="poly" coords="594, 18, 678, 41, 732, 62, 807, 101, 857, 138, 836, 165, 781, 126, 720, 95, 650, 68, 586, 52" alt="Sección 27" onclick="alert('S27')")
+          area(shape="poly" coords="26, 169, 81, 129, 144, 96, 194, 76, 275, 55, 283, 89, 220, 104, 164, 125, 102, 157, 48, 196" alt="Sección 22" onclick="alert('S22')")
+          area(shape="poly" coords="286, 54, 364, 43, 430, 39, 497, 43, 574, 54, 567, 86, 504, 78, 442, 73, 363, 77, 294, 85" alt="Sección 23" onclick="alert('S23')")
+          area(shape="poly" coords="585, 56, 645, 70, 714, 95, 771, 124, 834, 168, 812, 198, 0, 0, 0, 0, 0, 0, 0, 0" alt="Sección 24" onclick="alert('S24')")
 
     include sections/section-1
     include sections/section-2
@@ -22,7 +32,7 @@ block content
       socketId = socket.id;
     });
 
-    $(".button-collapse").sideNav({  
+    $("area").sideNav({  
       menuWidth: '80%',  
       edge: 'right', // Choose the horizontal origin      
     });
@@ -92,3 +102,7 @@ block content
       $(data.id).attr('data-blocked',  data.blocked);
 
     });
+
+    function coordinadas(event){
+    alert("Posición del ratón\nx: " + event.x + "\ny: " + event.y);
+    }

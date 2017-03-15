@@ -12,7 +12,7 @@ a {
 }
 
 header, main, footer {
-	padding-left: 22%;
+	padding-left: 24%;
 }
 
 .subtitle {
@@ -27,9 +27,19 @@ header, main, footer {
 
 [id^='seccion-']{
 	/*background: #f9fbe7 ;*/
+	padding-left: 22%;
 }
 
+.close-btn{
+	position:absolute; top:30px; right:50px;
+}
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .asiento {
+	width: 50px;
 	height: 50px;
 	border: 1px solid #aaa;
 	border-radius: 5px;
@@ -48,7 +58,9 @@ header, main, footer {
 }
 
 #sidenav {
-	width: 20%;
+	width: 22%;
+	overflow-y: hidden;
+	box-shadow: none;
 	/*background-color: #f9fbe7 ;*/
 }
 
@@ -72,6 +84,8 @@ header, main, footer {
 }
 .sidenav-content {
 	padding: 50px 10px 0;
+	border-right: 2px solid #ddd;
+	height: 100%;
 }
 .btn-floating.btn-large-2 {
 	width: 85px;
@@ -85,6 +99,18 @@ header, main, footer {
 	font-size: 1.3rem;
 	font-weight: bold;
 	color: #111;
+}
+.escenario {
+	padding: 10px 0 15px 0!important;
+	border-radius: 0 0 70px 70px;
+	letter-spacing: 10px;
+}
+.badge-seccion {
+	padding: 13px 40px;
+	font-size: 1.1rem;
+	background: #e96443; 
+	background: -webkit-linear-gradient(to right, #e96443 , #904e95);
+	background: linear-gradient(to right, #e96443 , #904e95);
 }
 /***************
 *BORDERS
@@ -130,3 +156,7 @@ header, main, footer {
 .mb-0 {
 	margin-bottom: 0!important;
 }
+
+/*.side-nav {
+	box-shadow: none;
+}*/

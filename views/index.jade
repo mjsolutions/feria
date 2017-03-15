@@ -11,10 +11,10 @@ block content
     section(style="min-height: 50.5vh;")
       div.row
         .col.s1
-        img#teatro(src="/images/teatro.png" usemap="#teatro-pueblo" onclick="coordinadas(event)")
+        img#teatro(src="/images/teatro.png" usemap="#teatro-pueblo")
         map(name="teatro-pueblo")
-          area(shape="poly" data-activates="seccion-1" coords="2, 138, 49, 103, 119, 66, 202, 33, 267, 18, 274, 52, 216, 66, 141, 94, 84, 125, 24, 166" alt="Sección 25" )
-          area(shape="poly" data-activates="seccion-2" coords="278, 16, 356, 6, 429, 2, 511, 6, 582, 17, 575, 51, 503, 39, 436, 36, 358, 40, 286, 50" alt="Sección 26" )
+          area(shape="poly" data-activates="seccion-25" coords="2, 138, 49, 103, 119, 66, 202, 33, 267, 18, 274, 52, 216, 66, 141, 94, 84, 125, 24, 166" alt="Sección 25" )
+          area(shape="poly" data-activates="seccion-26" coords="278, 16, 356, 6, 429, 2, 511, 6, 582, 17, 575, 51, 503, 39, 436, 36, 358, 40, 286, 50" alt="Sección 26" )
           area(shape="poly" coords="594, 18, 678, 41, 732, 62, 807, 101, 857, 138, 836, 165, 781, 126, 720, 95, 650, 68, 586, 52" alt="Sección 27")
           area(shape="poly" coords="26, 169, 81, 129, 144, 96, 194, 76, 275, 55, 283, 89, 220, 104, 164, 125, 102, 157, 48, 196" alt="Sección 22")
           area(shape="poly" coords="286, 54, 364, 43, 430, 39, 497, 43, 574, 54, 567, 86, 504, 78, 442, 73, 363, 77, 294, 85" alt="Sección 23")
@@ -41,8 +41,8 @@ block content
           area(shape="poly" coords="346, 308, 390, 302, 428, 301, 469, 302, 515, 308, 507, 341, 472, 336, 436, 334, 397, 335, 354, 341" alt="Sección 2")
           area(shape="poly" coords="526, 310, 565, 320, 602, 335, 632, 349, 673, 377, 651, 406, 617, 381, 591, 366, 554, 353, 518, 344" alt="Sección 3")
 
-    include sections/section-1
-    include sections/section-2
+    include sections/section-25
+    include sections/section-26
 
   include sidenav
   script(src="/js/jquery-3.1.1.min.js")
@@ -57,20 +57,17 @@ block content
     });
 
     $("area").sideNav({  
-      menuWidth: '80%',  
-      edge: 'right', // Choose the horizontal origin      
+      menuWidth: '100%',  
+      edge: 'left', // Choose the horizontal origin      
     });
     //- $("#sidenav").sideNav({
     //-   menuWidth: 200,
     //- });
 
-    $("#close-1").click(function() {
-      $("#seccion-1").sideNav('hide');
+    $(".close-btn").click(function() {
+      var id = "#seccion-" + $(this).attr('data-close');
+      $(id).sideNav('hide');
       //- alert(pendientes);
-    });
-
-    $("#close-2").click(function() {
-      $("#seccion-2").sideNav('hide');
     });
 
     $(".asiento").click(function() {

@@ -49,7 +49,7 @@ block content
   script(src="/js/materialize.min.js")
   script(src="/socket.io/socket.io.js")
   script.
-    var socket = io.connect('localhost:3000', {forceNew: true});
+    var socket = io.connect('http://localhost:3000', {forceNew: true});
     var pendientes = false;
     var socketId;
     var fila = [];
